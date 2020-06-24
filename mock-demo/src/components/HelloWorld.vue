@@ -35,7 +35,33 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  }
+  },
+  mounted() {
+    this.getHomeData();
+    this.getHomeData2();
+  },
+  methods: {
+    getHomeData() {
+      this.$http.get("/service-user/authUser/getToken").then(res => {
+        console.log(res);
+      }).catch(error=>{
+        console.log(error);
+      }); 
+    },
+    getHomeData2() {
+      var param = {
+        "phone":"18950361111",
+        "password":"123213"
+      };
+
+      this.$http.post('/service-user/authUser/getToken2',param)
+      .then(res => {
+        console.log(res)   //查询成功返回的值
+        this.info = res.data.content
+      })
+      .catch(error => { console.log(error) })        
+    }    
+  }  
 }
 </script>
 
