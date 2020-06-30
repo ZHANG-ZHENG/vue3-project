@@ -42,7 +42,12 @@ Vue.use(VueRouter)
     path: '/demo6',
     name: 'Demo6',
     component: () => import('../views/Demo6.vue')
-  },    
+  }, 
+  {
+    path: '/demo7',
+    name: 'Demo7',
+    component: () => import('../views/Demo7.vue')
+  },     
 ]
 
 const router = new VueRouter({

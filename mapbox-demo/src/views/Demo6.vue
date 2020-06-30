@@ -21,47 +21,80 @@ export default {
         mapboxgl.accessToken = 'pk.eyJ1Ijoiemhlbmd6aGFuZyIsImEiOiJja2J1a2Z2MGEwNWk2MnlvNW03ajlybTJsIn0.wkVTkCrn81LDVglsHv3pjA';
         var map = new mapboxgl.Map({
             container: this.$refs.basicMapbox,
-            style: 'mapbox://styles/mapbox/streets-v11'
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center:  [102.73,25.04],
+            zoom: 10.5,
+            pitch: 45            
         });
 
         map.on('load', function() {
             map.loadImage(
                 //'https://upload.wikimedia.org/wikipedia/commons/7/7c/201408_cat.png',
-                'http://localhost:8081/resources/apps/framework/assets/login-bg.png',
+                '/resources/apps/framework/assets/login-bg.png',
                 function(error, image) {
                     if (error) throw error;
                     map.addImage('cat', image);
-                    map.addSource('point', {
-                        'type': 'geojson',
-                        'data': {
-                            'type': 'FeatureCollection',
-                            'features': [
+
+                    var myLocation={
+                            "type": "FeatureCollection",
+                            "features": [
                                 {
-                                    'type': 'Feature',
-                                    'geometry': {
-                                        'type': 'Point',
-                                        'coordinates': [0, 0]
+                                    "type": "Feature",
+                                    "properties": {
+                                        "id":1,
+                                        "name": "kunming",
+                                        "color":"red",
+                                        "im":"cat",
+                                        "size":0.25,
+                                    },
+                                    "geometry": {
+                                        "coordinates": [102.73,25.04],
+                                        "type": "Point"
+                                    }
+                                },
+                                {
+                                    "type": "Feature",
+                                    "properties": {
+                                        "id":10,
+                                        "name": "kunming",
+                                        "color":"green",
+                                        "im":"cat",
+                                        "size":0.15,
+                                    },
+                                    "geometry": {
+                                        "coordinates": [102.83,25.04],    //获取color字段，设置点的颜色
+                                        "type": "Point"
                                     }
                                 }
                             ]
-                        }
-                    });
-                    map.addLayer({
-                        'id': 'points',
-                        'type': 'symbol',
-                        'source': 'point',
-                        'layout': {
-                            'icon-image': 'cat',
-                            'icon-size': 0.25
-                        }
-                    });
+                        };
+                         
+                         
+                        map.addSource('mySource', { type: 'geojson', data: myLocation });
+                        map.addLayer({
+                            "id": "myLayer",
+                            //"type": "circle",
+                            "type": "symbol",
+                            "source": "mySource",
+                            // "paint": {
+                            //     "circle-color": ["get",'color']     
+                            // }
+                            'layout': {
+                                'icon-image': 'cat',
+                                'icon-size': ["get",'size']
+                            }                            
+                        });
+
+
+
+
                 }
             );
+    
         });
 
+    },
 
-
-    }
   },
   computed: {
   }

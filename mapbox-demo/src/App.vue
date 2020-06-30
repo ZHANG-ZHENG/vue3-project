@@ -7,7 +7,8 @@
       <router-link to="/demo3">demo3</router-link> | 
       <router-link to="/demo4">demo4</router-link> |  
       <router-link to="/demo5">demo5</router-link> |     
-      <router-link to="/demo6">demo6</router-link>
+      <router-link to="/demo6">demo6 自定义图片</router-link> |
+      <router-link to="/demo7">demo7 数据加载</router-link>
     </div>
     <router-view/>
   </div>
