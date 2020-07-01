@@ -106,6 +106,7 @@ export default {
                     'layout': {
                         'icon-image': ["get",'im'],
                         'icon-size': ["get",'size'],
+                        "icon-allow-overlap": true,
                     }                            
                 });
 
@@ -173,7 +174,8 @@ export default {
                 // }
                 'layout': {
                     'icon-image': 'car',
-                    'icon-size': ["get",'size']
+                    'icon-size': ["get",'size'],
+                    "icon-allow-overlap": true,
                 }                            
             });
           
