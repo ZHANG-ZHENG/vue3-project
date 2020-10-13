@@ -10,7 +10,8 @@
       <router-link to="/demo6">demo6 自定义图片</router-link> |
       <router-link to="/demo7">demo7 数据加载</router-link> |
       <router-link to="/demo8">demo8 动图</router-link> |
-      <router-link to="/demo9">demo9 天地图</router-link>
+      <router-link to="/demo9">demo9 天地图</router-link> |
+      <router-link to="/demo10">demo10 本地化</router-link> |
     </div>
     <router-view/>
   </div>
